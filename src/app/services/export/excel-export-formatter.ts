@@ -53,7 +53,7 @@ export class ExcelExportFormatter implements ExportFormatter {
     }
 
     private formatDateCell(cellValue: Date, cellAddress: string): string {
-        return `<c r="${cellAddress}" t="d"><v>${cellValue.toISOString()}</v></c>`;
+        return `<c r="${cellAddress}" t="d" s="1"><v>${cellValue.toISOString()}</v></c>`;
     }
 
     private emptyNumberCell(cellAddress: string): string {

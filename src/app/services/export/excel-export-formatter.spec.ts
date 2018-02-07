@@ -41,11 +41,11 @@ describe('ExcelExportFormatter', () => {
     // results for cells with values
     const row2ColA = '<c r="A2" t="inlineStr"><is><t>Test</t></is></c>';
     const row2ColB = '<c r="B2"><v>1000</v></c>';
-    const row2ColC = '<c r="C2" t="d"><v>1995-12-17T08:24:00.000Z</v></c>';
+    const row2ColC = '<c r="C2" t="d" s="1"><v>1995-12-17T08:24:00.000Z</v></c>';
     // results for cells with empty values
     const row3ColA = '<c r="A3" t="inlineStr"><is><t></t></is></c>';
     const row3ColB = '<c r="B3"><v>0</v></c>';
-    const row3ColC = '<c r="C3" t="d"><v>1970-01-01T00:00:00.000Z</v></c>';
+    const row3ColC = '<c r="C3" t="d" s="1"><v>1970-01-01T00:00:00.000Z</v></c>';
     // results for cells with nulls
     const row4ColA = '<c r="A4"><v>0</v></c>';
     // expected row results

@@ -64,7 +64,7 @@ export class ExcelExportService implements ExportService {
     zip.file('_rels/.rels', ExcelTemplates.rels);
     zip.file('[Content_Types].xml', ExcelTemplates.contentTypes);
     zip.file('xl/_rels/workbook.xml.rels', ExcelTemplates.workbookRels);
-    // zip.file('xl/styles.xml', ExcelTemplates.styles);
+    zip.file('xl/styles.xml', ExcelTemplates.styles);
     zip.file('xl/workbook.xml', ExcelTemplates.workbook);
     zip.file('xl/worksheets/sheet1.xml', worksheet);
 
