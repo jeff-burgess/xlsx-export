@@ -3,18 +3,6 @@ import { ExcelExportFormatter } from './excel-export-formatter';
 
 describe('ExcelExportFormatter', () => {
 
-    /*
-
-    Expected appearance in Excel:
-                 A                 B                   C
-    ---  ----------------  ----------------  --------------------
-     1    sample strings    sample numbers    sample dates
-     2    Test                        1000    12/17/1995 3:24 AM
-     3                                   0    1/1/1970
-     4
-
-     */
-
     // column headers
     const colAHeader = 'sample strings';
     const colBHeader = 'sample numbers';
@@ -47,7 +35,7 @@ describe('ExcelExportFormatter', () => {
     const row3ColB = '<c r="B3"><v>0</v></c>';
     const row3ColC = '<c r="C3" t="d" s="1"><v>1970-01-01T00:00:00.000Z</v></c>';
     // results for cells with nulls
-    const row4ColA = '<c r="A4"><v>0</v></c>';
+    const row4ColA = '';
     // expected row results
     const row1 = '<row r="1">' + row1ColA + row1ColB + row1ColC + '</row>';
     const row2 = '<row r="2">' + row2ColA + row2ColB + row2ColC + '</row>';

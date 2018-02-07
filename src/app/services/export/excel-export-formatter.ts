@@ -39,8 +39,12 @@ export class ExcelExportFormatter implements ExportFormatter {
             return this.formatStringCell(cellValue as string, cellAddress);
         } else if (cellValue instanceof Date) {
             return this.formatDateCell(cellValue as Date, cellAddress);
+        } else if (cellValue === null || typeof cellValue === 'undefined') {
+            return '';
         } else {
-            return this.emptyNumberCell(cellAddress);
+            // Not sure if this code path is even accessible
+            console.warn(`Cannot format unexpected data type: '${typeof cellValue}' for cell ${cellAddress}`);
+            return '';
         }
     }
 
@@ -54,9 +58,5 @@ export class ExcelExportFormatter implements ExportFormatter {
 
     private formatDateCell(cellValue: Date, cellAddress: string): string {
         return `<c r="${cellAddress}" t="d" s="1"><v>${cellValue.toISOString()}</v></c>`;
-    }
-
-    private emptyNumberCell(cellAddress: string): string {
-        return `<c r="${cellAddress}"><v>0</v></c>`;
     }
 }

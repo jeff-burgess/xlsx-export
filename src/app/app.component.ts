@@ -11,11 +11,7 @@ export class AppComponent {
 
   title = 'Export Prototype';
 
-  constructor(private exportService: ExportService) {
-  }
-
-  public download(): void {
-    const config: ExportConfig = {
+  config: ExportConfig = {
       fileName: 'prototype',
       data: [
         // row 2
@@ -26,13 +22,24 @@ export class AppComponent {
         ]),
         // row 3
         new Map<string, string|number|Date>([
-          ['test strings', 'goodbye'],
+          ['test strings', ''],
           ['test numbers', 0],
+          ['test dates', new Date(0)]
+        ]),
+        // row 4
+        new Map<string, string|number|Date>([
+          ['test strings', null],
+          ['test numbers', null],
           ['test dates', null]
         ])
       ]
     };
-    this.exportService.export(config);
+
+  constructor(private exportService: ExportService) {
+  }
+
+  public download(): void {
+    this.exportService.export(this.config);
   }
 
 }
