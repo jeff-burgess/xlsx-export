@@ -1,3 +1,7 @@
+export type CellData = string|number|Date;
+
+export type RowData = Map<string, CellData>;
+
 export interface ExportConfig {
 
     /**
@@ -8,5 +12,5 @@ export interface ExportConfig {
     /**
      * Data to be exported
      */
-    data: Map<string, string|number|Date>[];
+    data: RowData[];
 }

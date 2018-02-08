@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ExcelExportService, ExportConfigValidationError } from './excel-export.service';
-import { ExportConfig } from './export-config';
+import { ExportConfig, RowData, CellData } from './export-config';
 
 describe('ExportService', () => {
 
@@ -16,7 +16,7 @@ describe('ExportService', () => {
   }));
 
   it('validate should detect null file name', inject([ExcelExportService], (service: ExcelExportService) => {
-    const data = new Map<string, string|number|Date>();
+    const data: RowData = new Map<string, string|number|Date>();
     data.set('foo', 'bar');
     const config: ExportConfig = {
       fileName: null,
@@ -28,7 +28,7 @@ describe('ExportService', () => {
   }));
 
   it('validate should detect empty file name', inject([ExcelExportService], (service: ExcelExportService) => {
-    const data = new Map<string, string|number|Date>();
+    const data: RowData = new Map<string, string|number|Date>();
     data.set('foo', 'bar');
     const config: ExportConfig = {
       fileName: '',

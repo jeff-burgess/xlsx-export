@@ -1,6 +1,7 @@
+import { RowData, CellData } from './export-config';
 export interface ExportFormatter {
-    formatData(data: Map<string, string|number|Date>[]): string;
-    formatHeaders(firstRowValues: Map<string, string|number|Date>): string;
-    formatRow(rowValues: Map<string, string|number|Date>, rowIndex: number): string;
-    formatCell(cellValue: string|number|Date, rowIndex: number, columnIndex: number): string;
+    formatData(data: RowData[]): string;
+    formatHeaders(firstRowValues: RowData): string;
+    formatRow(rowValues: RowData, rowIndex: number): string;
+    formatCell(cellValue: CellData, rowIndex: number, columnIndex: number): string;
 }

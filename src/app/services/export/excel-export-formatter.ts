@@ -1,37 +1,38 @@
 import { ExportFormatter } from './export-formatter';
+import { RowData, CellData } from './export-config';
 
 export class ExcelExportFormatter implements ExportFormatter {
 
-    public formatData(data: Map<string, string|number|Date>[]): string {
+    public formatData(data: RowData[]): string {
         let formatted = this.formatHeaders(data[0]);
-        data.forEach((rowValues: Map<string, string|number|Date>, rowIndex: number) => {
+        data.forEach((rowValues: RowData, rowIndex: number) => {
             formatted += this.formatRow(rowValues, rowIndex + 2);
         });
         return formatted;
     }
 
-    public formatHeaders(firstRowValues: Map<string, string|number|Date>): string {
+    public formatHeaders(firstRowValues: RowData): string {
         const rowIndex = 1;
         let formatted = '';
         let columnIndex = 0;
-        firstRowValues.forEach( (cellValue: string|number|Date, key: string) => {
+        firstRowValues.forEach( (cellValue: CellData, key: string) => {
             formatted += this.formatCell(key, rowIndex, columnIndex);
             columnIndex++;
         });
         return `<row r="${rowIndex}">${formatted}</row>`;
     }
 
-    public formatRow(rowValues: Map<string, string|number|Date>, rowIndex: number): string {
+    public formatRow(rowValues: RowData, rowIndex: number): string {
         let formatted = '';
         let columnIndex = 0;
-        rowValues.forEach( (cellValue: string|number|Date, key: string) => {
+        rowValues.forEach( (cellValue: CellData, key: string) => {
             formatted += this.formatCell(cellValue, rowIndex, columnIndex);
             columnIndex++;
         });
         return `<row r="${rowIndex}">${formatted}</row>`;
     }
 
-    public formatCell(cellValue: string|number|Date, rowIndex: number, columnIndex: number): string {
+    public formatCell(cellValue: CellData, rowIndex: number, columnIndex: number): string {
         const cellAddress = String.fromCharCode(97 + columnIndex).toUpperCase() + rowIndex;
         if (typeof cellValue === 'number') {
             return this.formatNumberCell(cellValue as number, cellAddress);

@@ -1,5 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { ExcelExportFormatter } from './excel-export-formatter';
+import { RowData, CellData } from './export-config';
 
 describe('ExcelExportFormatter', () => {
 
